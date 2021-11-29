@@ -35,4 +35,8 @@
         android:id="@+id/bottomNavigationActivity"
         android:name="id.gwijaya94.navigationcomponent.BottomNavigationActivity"
         android:label="BottomNavigationActivity" />
+    <activity
+        android:id="@+id/viewPagerActivity"
+        android:name="id.gwijaya94.navigationcomponent.ViewPagerActivity"
+        android:label="ViewPagerActivity" />
 </navigation>

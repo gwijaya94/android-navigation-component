@@ -33,6 +33,9 @@
                     android:id="@+id/bottomNavigationActivity"
                     android:title="BottomNav" />
                 <item
+                    android:id="@+id/viewPagerActivity"
+                    android:title="TabLayout" />
+                <item
                     android:id="@+id/nav_subway"
                     android:icon="@drawable/ic_subway"
                     android:title="@string/menu_subway" />
