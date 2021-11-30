@@ -1,6 +1,7 @@
 package id.gwijaya94.navigationcomponent.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +25,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -38,8 +39,31 @@ class HomeFragment : Fragment() {
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val index = arguments?.getInt(ARG_SECTION_NUMBER, 0)
+        Log.d("ini cek index", "onViewCreated: $index ${getString(R.string.content_tab_text, index)}")
+
+        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+            binding.textHome.text= getString(R.string.content_tab_text, index)
+        })
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val ARG_SECTION_NUMBER = "section_number"
+
+        @JvmStatic
+        fun newInstance(index: Int) =
+            HomeFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(ARG_SECTION_NUMBER, index)
+                }
+            }
     }
 }
